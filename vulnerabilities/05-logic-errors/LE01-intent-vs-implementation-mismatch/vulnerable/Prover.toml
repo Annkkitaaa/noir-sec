@@ -1,4 +1,4 @@
 token_id = "42"
-metadata_hash = "0x0000000000000000000000000000000000000000000000000000000000000001"
-owner_commitment = "0x0000000000000000000000000000000000000000000000000000000000000002"
-owner_key = "0xbobsrandomvalue"   # Bob doesn't know Alice's key — uses any value
+metadata_hash = "0x13b4df2bb5c6ef44590c1f54edb6eddd576d276e8043972f1ed0f3746b422925"
+owner_commitment = "1"
+owner_key = "12345"

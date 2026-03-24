@@ -1,4 +1,4 @@
-asset_id = "99"       # Worthless token
+asset_id = "1"
 borrow_amount = "10000"
 price_threshold = "30000"
 collateral_amount = "1"

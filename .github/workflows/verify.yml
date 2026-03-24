@@ -57,7 +57,8 @@ jobs:
             is_expected=0
             [[ "$dir" == *"OC01"*"vulnerable"* ]] && is_expected=1
             [[ "$dir" == *"OC02"*"vulnerable"* ]] && is_expected=1
-            result=$(cd "$dir" && nargo execute 2>&1)
+            pkg=$(sed -n 's/^name = "\(.*\)"/\1/p' "$dir/Nargo.toml" | head -1)
+            result=$(cd "$dir" && nargo execute --package "$pkg" 2>&1)
             if echo "$result" | grep -q "Circuit witness successfully solved"; then
               echo "PASS: $dir"
               PASS=$((PASS+1))
