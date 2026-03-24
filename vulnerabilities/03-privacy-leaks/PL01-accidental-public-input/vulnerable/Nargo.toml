@@ -1,0 +1,8 @@
+[package]
+name = "pl01_vulnerable"
+type = "bin"
+authors = ["NoirSec"]
+compiler_version = ">=0.1.0"
+description = "PL01 - Accidental Public Input (vulnerable circuit)"
+
+[dependencies]

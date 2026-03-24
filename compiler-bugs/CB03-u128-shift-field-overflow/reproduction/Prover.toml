@@ -1,0 +1,9 @@
+# CB03 Reproduction inputs
+# Safe case: 1 << 10 = 1024 (well within field bounds)
+# To trigger the bug: use base=1, shift_amount=127 (= 2^127, near field modulus)
+# In affected compilers: result would be field-reduced incorrectly.
+base = "1"
+shift_amount = "10"
+expected_result = "1024"
+# Note: shift_amount is u128 (Noir requires same bit width for both shift operands)
+# To probe the bug boundary: set shift_amount="127", expected_result="170141183460469231731687303715884105728"

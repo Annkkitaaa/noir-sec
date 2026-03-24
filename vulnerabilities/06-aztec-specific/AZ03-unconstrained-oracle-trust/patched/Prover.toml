@@ -1,0 +1,6 @@
+asset_id = "1"
+borrow_amount = "10000"
+price_threshold = "30000"
+collateral_amount = "1"
+oracle_price = "42000"
+oracle_commitment = "0x2912731ec75d2b6bb0075b00818fbf954d28bda89c7898581e6a709b9cc1ce91"

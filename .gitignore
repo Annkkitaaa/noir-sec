@@ -1,0 +1,24 @@
+.claude
+
+# Nargo build artifacts
+target/
+*.gz
+
+# Diff tester backups
+*.bak
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+
+# CTF solutions (keep hidden from public repo)
+ctf/solutions.toml
+
+# OS artifacts
+.DS_Store
+Thumbs.db
+
+# Editor artifacts
+*.swp
+*.swo

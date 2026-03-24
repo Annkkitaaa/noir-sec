@@ -1,0 +1,8 @@
+[package]
+name = "uc03_patched"
+type = "bin"
+authors = ["NoirSec"]
+compiler_version = ">=0.1.0"
+description = "UC03 - Missing Nullifier Uniqueness (patched circuit)"
+
+[dependencies]

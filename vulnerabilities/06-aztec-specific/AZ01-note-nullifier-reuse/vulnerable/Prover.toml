@@ -1,0 +1,6 @@
+note_value = "100"
+note_salt = "42"
+owner_secret = "99999"
+note_hash = "0x29c2c0bed7da20fca583cfd0049820f3fb1f705ef6ee7c02007daad1c8762bbd"
+nullifier = "0x08a63a1f3b518e91eae95ee0622f50843a446d420e6334088738db4e29c425b2"
+recipient = "1234"

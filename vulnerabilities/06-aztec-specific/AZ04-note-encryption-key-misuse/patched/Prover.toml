@@ -1,0 +1,4 @@
+secret_note = "12345"
+sender_key = "99999"
+recipient_pubkey = "67890"
+encrypted_note = "0x0539222e70963aab30360452087fa38862c31537d679aa427324eb8622d34243"

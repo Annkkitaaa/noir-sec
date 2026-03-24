@@ -1,0 +1,8 @@
+[package]
+name = "le03_patched"
+type = "bin"
+authors = ["NoirSec"]
+compiler_version = ">=0.1.0"
+description = "LE03 - Replay Attack No Nonce (patched circuit)"
+
+[dependencies]

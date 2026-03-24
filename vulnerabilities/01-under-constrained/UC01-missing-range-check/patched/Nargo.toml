@@ -1,0 +1,8 @@
+[package]
+name = "uc01_patched"
+type = "bin"
+authors = ["NoirSec"]
+compiler_version = ">=0.1.0"
+description = "UC01 - Missing Range Check (patched circuit)"
+
+[dependencies]

@@ -1,0 +1,120 @@
+name: NoirSec Verification
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    env:
+      NARGO_VERSION: "1.0.0-beta.19"
+
+    steps:
+      - uses: actions/checkout@v4
+
+      # ── Install Nargo ──────────────────────────────────────────
+      - name: Install Nargo ${{ env.NARGO_VERSION }}
+        run: |
+          ARCHIVE="nargo-x86_64-unknown-linux-gnu.tar.gz"
+          curl -fsSL \
+            "https://github.com/noir-lang/noir/releases/download/v${NARGO_VERSION}/${ARCHIVE}" \
+            -o /tmp/nargo.tar.gz
+
+          # Extract to a temp dir first so we can locate the binary
+          # regardless of the tarball's internal directory structure
+          mkdir -p /tmp/nargo-extract
+          tar -xzf /tmp/nargo.tar.gz -C /tmp/nargo-extract
+
+          # Find the nargo binary (handles both flat and nested tarballs)
+          NARGO_BIN=$(find /tmp/nargo-extract -name "nargo" -type f | head -1)
+          if [ -z "$NARGO_BIN" ]; then
+            echo "ERROR: nargo binary not found in tarball"
+            ls -la /tmp/nargo-extract/
+            exit 1
+          fi
+
+          mkdir -p "$HOME/.nargo/bin"
+          cp "$NARGO_BIN" "$HOME/.nargo/bin/nargo"
+          chmod +x "$HOME/.nargo/bin/nargo"
+          echo "$HOME/.nargo/bin" >> "$GITHUB_PATH"
+
+      - name: Verify Nargo version
+        run: nargo --version
+
+      # ── Compile all circuits ───────────────────────────────────
+      - name: Compile all circuits (nargo check)
+        run: bash scripts/verify_all.sh
+
+      # ── Execute all circuits with Prover.toml inputs ───────────
+      - name: Execute all circuits (nargo execute)
+        run: |
+          PASS=0; XFAIL=0; FAIL=0
+          dirs=$(find vulnerabilities -maxdepth 3 -type d \( -name "vulnerable" -o -name "patched" \) | sort)
+          for dir in $dirs; do
+            [ -f "$dir/src/main.nr" ] || continue
+            is_expected=0
+            [[ "$dir" == *"OC01"*"vulnerable"* ]] && is_expected=1
+            [[ "$dir" == *"OC02"*"vulnerable"* ]] && is_expected=1
+            result=$(cd "$dir" && nargo execute 2>&1)
+            if echo "$result" | grep -q "Circuit witness successfully solved"; then
+              echo "PASS: $dir"
+              PASS=$((PASS+1))
+            elif [ $is_expected -eq 1 ]; then
+              echo "XFAIL (expected): $dir"
+              XFAIL=$((XFAIL+1))
+            else
+              echo "FAIL: $dir"
+              echo "$result" | tail -5
+              FAIL=$((FAIL+1))
+            fi
+          done
+          echo ""
+          echo "Results: PASS=$PASS  XFAIL=$XFAIL  FAIL=$FAIL"
+          [ $FAIL -eq 0 ] || exit 1
+
+      # ── Run all exploit scripts ────────────────────────────────
+      - name: Run all exploit scripts
+        run: |
+          FAIL=0
+          for script in $(find vulnerabilities -name "exploit.sh" | sort); do
+            name=$(echo "$script" | cut -d/ -f3)
+            echo "=== $name ==="
+            if bash "$script"; then
+              echo "  OK: $name"
+            else
+              echo "  FAIL: $name (exit code $?)"
+              FAIL=$((FAIL+1))
+            fi
+            echo ""
+          done
+          [ $FAIL -eq 0 ] || exit 1
+
+      # ── Run Python exploit scripts ────────────────────────────
+      - name: Run Python exploit scripts
+        run: |
+          for script in $(find vulnerabilities -name "exploit.py" | sort); do
+            echo "=== $(echo $script | cut -d/ -f3) ==="
+            python3 "$script" || exit 1
+          done
+
+      # ── Run detection scripts ─────────────────────────────────
+      - name: Run detection scripts
+        run: |
+          python3 detection/constraint_counter.py \
+            vulnerabilities/01-under-constrained/UC01-missing-range-check/vulnerable \
+            vulnerabilities/01-under-constrained/UC01-missing-range-check/patched
+
+          python3 detection/differential_witness.py \
+            vulnerabilities/01-under-constrained/UC01-missing-range-check/vulnerable
+
+          python3 detection/privacy_leak_fuzzer.py \
+            vulnerabilities/03-privacy-leaks/PL01-accidental-public-input/vulnerable
+
+      # ── Generate coverage report ──────────────────────────────
+      - name: Generate coverage report
+        run: python3 scripts/generate_report.py
+
+      - name: Show report
+        run: cat REPORT.md

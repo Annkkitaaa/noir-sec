@@ -1,0 +1,4 @@
+# FA03 Patched — Same inputs, now correct integer modulo
+user_id = "1000"
+num_shards = "256"
+shard_id = "232"

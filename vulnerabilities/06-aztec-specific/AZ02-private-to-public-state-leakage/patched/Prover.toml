@@ -1,0 +1,5 @@
+sender_address = "12345"
+private_balance = "1000"
+tx_salt = "9876543"
+withdrawal_amount = "100"
+user_commitment = "0x0ade554f71a072ed18b62ce03962911fe2b815366ea1c67a629df10354725919"

@@ -1,0 +1,7 @@
+# AZ06 patched -- caller_secret proves identity
+# auth_commitment = pedersen_hash([authorized_sender=12345, caller_secret=4660])
+# Placeholder: replace with actual pedersen_hash([12345, 4660]) value after computing with nargo
+authorized_sender = "12345"
+action_amount = "100"
+auth_commitment = "0x133d8fdc3f3b9b6075768dd1363cf8df4ea45fdb208e91d7d66df1a6cedf47f9"
+caller_secret = "4660"

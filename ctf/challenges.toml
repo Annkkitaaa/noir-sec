@@ -1,0 +1,317 @@
+# NoirSec CTF Challenge Registry
+# ================================
+# Each challenge maps to a vulnerability in the vulnerabilities/ directory.
+# Solve a challenge by finding and exploiting the vulnerability.
+#
+# Difficulty: 1=Easy, 2=Medium, 3=Hard
+# Points:     Easy=100, Medium=200, Hard=300
+
+[[challenge]]
+id = "CTF-01"
+name = "Age of Darkness"
+vuln_id = "UC01"
+category = "under-constrained"
+difficulty = 1
+points = 100
+description = """
+An age-gated platform issues ZK proofs. A 5-year-old wants in.
+Can they generate a valid "I am 18+" proof without knowing anyone's secret?
+"""
+hint = "What type is 'age' declared as in the vulnerable circuit?"
+path = "vulnerabilities/01-under-constrained/UC01-missing-range-check/vulnerable"
+
+[[challenge]]
+id = "CTF-02"
+name = "The Composite Lie"
+vuln_id = "UC02"
+category = "under-constrained"
+difficulty = 2
+points = 200
+description = """
+A ZK circuit claims to prove that a number is composite (has factors).
+Prove that the prime number 7 is "composite." Then prove ANY number is composite.
+"""
+hint = "The circuit verifies hints from an unconstrained function. What constraints are missing?"
+path = "vulnerabilities/01-under-constrained/UC02-unconstrained-hint-abuse/vulnerable"
+
+[[challenge]]
+id = "CTF-03"
+name = "Ghost Nullifier"
+vuln_id = "UC03"
+category = "under-constrained"
+difficulty = 2
+points = 200
+description = """
+Alice has two different notes in her wallet (same value, different salts).
+Show that both notes produce the SAME nullifier -- spending one burns the other.
+"""
+hint = "What fields does the nullifier hash include in the vulnerable version?"
+path = "vulnerabilities/01-under-constrained/UC03-missing-nullifier-uniqueness/vulnerable"
+
+[[challenge]]
+id = "CTF-04"
+name = "One Key, Two Locks"
+vuln_id = "UC04"
+category = "under-constrained"
+difficulty = 2
+points = 200
+description = """
+A 2-of-2 multi-credential system requires two DIFFERENT credentials.
+Can you satisfy both credential slots with a single credential?
+"""
+hint = "The circuit checks that both credentials are valid, but does it check they are different?"
+path = "vulnerabilities/01-under-constrained/UC04-duplicate-witness-assignment/vulnerable"
+
+[[challenge]]
+id = "CTF-05"
+name = "The Billion Dollar Overflow"
+vuln_id = "FA01"
+category = "field-arithmetic"
+difficulty = 2
+points = 200
+description = """
+A DeFi circuit validates that withdrawal <= balance.
+Can you withdraw more tokens than exist in the universe?
+"""
+hint = "What is the BN254 field prime? What happens when you subtract field elements that wrap around?"
+path = "vulnerabilities/04-field-arithmetic/FA01-integer-overflow-in-field/vulnerable"
+
+[[challenge]]
+id = "CTF-06"
+name = "Divide by Zero Capital"
+vuln_id = "FA02"
+category = "field-arithmetic"
+difficulty = 1
+points = 100
+description = """
+A lending circuit requires a non-zero collateral ratio.
+Can you borrow infinite capital with zero collateral?
+"""
+hint = "Is there any constraint preventing the denominator from being zero?"
+path = "vulnerabilities/04-field-arithmetic/FA02-division-by-zero-no-constraint/vulnerable"
+
+[[challenge]]
+id = "CTF-07"
+name = "The Modular Phantom"
+vuln_id = "FA03"
+category = "field-arithmetic"
+difficulty = 3
+points = 300
+description = """
+A sharding circuit assigns users to shards using modular arithmetic.
+Can you find an input where the field modulo and integer modulo disagree?
+"""
+hint = "What happens to modular arithmetic when the value approaches the BN254 field prime?"
+path = "vulnerabilities/04-field-arithmetic/FA03-modular-arithmetic-misuse/vulnerable"
+
+[[challenge]]
+id = "CTF-08"
+name = "The Glass Box"
+vuln_id = "PL01"
+category = "privacy-leaks"
+difficulty = 1
+points = 100
+description = """
+A privacy-preserving KYC circuit proves identity without revealing the secret.
+Except... does it?
+"""
+hint = "Check the parameter declarations carefully. Which inputs are marked 'pub'?"
+path = "vulnerabilities/03-privacy-leaks/PL01-accidental-public-input/vulnerable"
+
+[[challenge]]
+id = "CTF-09"
+name = "Rainbow Table Time"
+vuln_id = "PL02"
+category = "privacy-leaks"
+difficulty = 2
+points = 200
+description = """
+A credit score circuit hides your score behind a hash.
+But the score is an integer between 300-850. Can you reverse it?
+"""
+hint = "How many possible values does a credit score have?"
+path = "vulnerabilities/03-privacy-leaks/PL02-small-domain-hash-brute-force/vulnerable"
+
+[[challenge]]
+id = "CTF-10"
+name = "Who Voted?"
+vuln_id = "PL03"
+category = "privacy-leaks"
+difficulty = 2
+points = 200
+description = """
+An anonymous voting system publishes nullifiers to prevent double-voting.
+Can you link a nullifier to the voter who cast it?
+"""
+hint = "What does the nullifier reveal about the voter if it only depends on their address?"
+path = "vulnerabilities/03-privacy-leaks/PL03-nullifier-identity-leak/vulnerable"
+
+[[challenge]]
+id = "CTF-11"
+name = "Statistical Shadow"
+vuln_id = "PL04"
+category = "privacy-leaks"
+difficulty = 3
+points = 300
+description = """
+A private voting circuit publishes only a 'vote_commitment.' But demographic
+data is also published. Can you identify how someone voted?
+"""
+hint = "Run the Python exploit script. What can you infer from the published data?"
+path = "vulnerabilities/03-privacy-leaks/PL04-correlation-via-public-outputs/vulnerable"
+
+[[challenge]]
+id = "CTF-12"
+name = "The Impossible Gate"
+vuln_id = "OC01"
+category = "over-constrained"
+difficulty = 2
+points = 200
+description = """
+A token circuit accepts token IDs. But some valid token IDs are rejected.
+Find a valid token_id that the vulnerable circuit incorrectly rejects.
+"""
+hint = "What is the maximum value of u32? What type restriction does the vulnerable circuit use?"
+path = "vulnerabilities/02-over-constrained/OC01-unnecessary-range-restriction/vulnerable"
+
+[[challenge]]
+id = "CTF-13"
+name = "The Unsatisfiable"
+vuln_id = "OC02"
+category = "over-constrained"
+difficulty = 1
+points = 100
+description = """
+A circuit has two assertions that can never both be true simultaneously.
+Identify the impossible constraint combination. No exploit needed -- just explain it.
+"""
+hint = "Look for two asserts that enforce contradictory conditions."
+path = "vulnerabilities/02-over-constrained/OC02-impossible-constraint-combination/vulnerable"
+
+[[challenge]]
+id = "CTF-14"
+name = "Dead Weight"
+vuln_id = "LE01"
+category = "logic-errors"
+difficulty = 2
+points = 200
+description = """
+A file integrity circuit computes a metadata hash -- but never uses it.
+What does a private input that appears in no assertion mean for security?
+"""
+hint = "Can the prover set metadata_hash to any value? What does that mean?"
+path = "vulnerabilities/05-logic-errors/LE01-intent-vs-implementation-mismatch/vulnerable"
+
+[[challenge]]
+id = "CTF-15"
+name = "Identity Theft"
+vuln_id = "LE02"
+category = "logic-errors"
+difficulty = 2
+points = 200
+description = """
+An auth circuit proves that sk matches auth_hash. But it doesn't prove
+that sk belongs to user_id. Bob wants to act as Alice. Can he?
+"""
+hint = "The circuit binds sk to auth_hash. Does it bind sk to user_id?"
+path = "vulnerabilities/05-logic-errors/LE02-missing-ownership-check/vulnerable"
+
+[[challenge]]
+id = "CTF-16"
+name = "Time Traveler"
+vuln_id = "LE03"
+category = "logic-errors"
+difficulty = 2
+points = 200
+description = """
+A transaction authorization circuit. You submit a proof, it gets processed once.
+Can the same proof be submitted again? What happens?
+"""
+hint = "Is there any nonce or timestamp preventing the same proof from being reused?"
+path = "vulnerabilities/05-logic-errors/LE03-replay-attack-no-nonce/vulnerable"
+
+[[challenge]]
+id = "CTF-17"
+name = "Double Spend"
+vuln_id = "AZ01"
+category = "aztec-specific"
+difficulty = 3
+points = 300
+description = """
+Aztec private UTXO model. Alice owns two different notes.
+Show that both notes produce the same nullifier in the vulnerable circuit.
+This means spending one 'burns' the other without the owner's intent.
+"""
+hint = "What does the nullifier hash include? Is it unique per note or per owner?"
+path = "vulnerabilities/06-aztec-specific/AZ01-note-nullifier-reuse/vulnerable"
+
+[[challenge]]
+id = "CTF-18"
+name = "The Historian"
+vuln_id = "AZ02"
+category = "aztec-specific"
+difficulty = 2
+points = 200
+description = """
+A private balance circuit stores balances as ZK commitments.
+But every deposit leaves a trace that links your balance history.
+Can you reconstruct someone's transaction history from public commitments?
+"""
+hint = "Run the Python analysis script. What information leaks from commitments without a salt?"
+path = "vulnerabilities/06-aztec-specific/AZ02-private-to-public-state-leakage/vulnerable"
+
+[[challenge]]
+id = "CTF-19"
+name = "The Oracle's Lie"
+vuln_id = "AZ03"
+category = "aztec-specific"
+difficulty = 3
+points = 300
+description = """
+An Aztec DeFi circuit uses an oracle to get the current price.
+But the oracle is called via an unconstrained function. Who controls what it returns?
+"""
+hint = "In Aztec's execution model, who acts as the prover? What can they make unconstrained functions return?"
+path = "vulnerabilities/06-aztec-specific/AZ03-unconstrained-oracle-trust/vulnerable"
+
+[[challenge]]
+id = "CTF-20"
+name = "Wrong Key"
+vuln_id = "AZ04"
+category = "aztec-specific"
+difficulty = 2
+points = 200
+description = """
+A note encryption circuit encrypts to the sender's key instead of the recipient's.
+Who can decrypt notes that were meant for someone else?
+"""
+hint = "Look at which key is used in pedersen_hash for the encrypted_note. Should it be sender or recipient?"
+path = "vulnerabilities/06-aztec-specific/AZ04-note-encryption-key-misuse/vulnerable"
+
+[[challenge]]
+id = "CTF-21"
+name = "Slot Collision"
+vuln_id = "AZ05"
+category = "aztec-specific"
+difficulty = 2
+points = 200
+description = """
+An Aztec contract stores balance and allowance in storage slots.
+Both slots are computed with the same formula. What happens when they collide?
+"""
+hint = "What is the slot index for balance? For allowance? Are they different?"
+path = "vulnerabilities/06-aztec-specific/AZ05-storage-slot-collision/vulnerable"
+
+[[challenge]]
+id = "CTF-22"
+name = "Impersonator"
+vuln_id = "AZ06"
+category = "aztec-specific"
+difficulty = 3
+points = 300
+description = """
+A private function checks the caller's identity via an oracle.
+But the oracle is unconstrained. As the sequencer/prover, can you impersonate anyone?
+"""
+hint = "The oracle returns claimed_sender. Is claimed_sender ever asserted to equal authorized_sender?"
+path = "vulnerabilities/06-aztec-specific/AZ06-private-function-sender-trust/vulnerable"

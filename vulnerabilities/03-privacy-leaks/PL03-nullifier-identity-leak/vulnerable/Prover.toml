@@ -1,0 +1,4 @@
+sender_address = "67890"
+recipient = "1234"
+amount = "100"
+nullifier = "0x1b90cf3b44d7b16293e1aca7f37148ec665c1592d33682571b3af18d62d6abb7"

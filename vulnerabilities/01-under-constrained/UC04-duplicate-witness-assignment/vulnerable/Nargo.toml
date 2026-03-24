@@ -1,0 +1,8 @@
+[package]
+name = "uc04_vulnerable"
+type = "bin"
+authors = ["NoirSec"]
+compiler_version = ">=0.1.0"
+description = "UC04 - Duplicate Witness Assignment (vulnerable circuit)"
+
+[dependencies]

@@ -1,0 +1,4 @@
+# CB01 Reproduction inputs
+# balances sum = 10 + 20 + 30 + 40 = 100
+balances = ["10", "20", "30", "40"]
+expected_sum = "100"

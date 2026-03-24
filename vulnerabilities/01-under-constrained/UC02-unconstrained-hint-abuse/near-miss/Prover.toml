@@ -1,0 +1,5 @@
+# UC02 Near-Miss: n=7 (a prime)
+# The near-miss accepts this because 1 * 7 == 7, and 1 != 0, 7 != 0.
+# A prime is "proven composite" via the trivial factorization (1, 7).
+# The patched version rejects this because it requires factors[0] > 1.
+n = "7"

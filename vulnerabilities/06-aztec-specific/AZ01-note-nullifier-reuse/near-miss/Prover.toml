@@ -1,0 +1,11 @@
+# AZ01 Near-Miss: Same note, spend with nonce=1
+# note_hash = pedersen_hash([100, 42, 99999]) = 0x29c2c0...
+# nullifier = pedersen_hash([99999, 1]) = 0x10652a...
+# Attack: use same note_hash with spend_nonce=2, get different nullifier -> double spend!
+note_value = "100"
+note_salt = "42"
+owner_secret = "99999"
+spend_nonce = "1"
+note_hash = "0x29c2c0bed7da20fca583cfd0049820f3fb1f705ef6ee7c02007daad1c8762bbd"
+nullifier = "0x10652aa1e993e91a80eaf512a7bd27414aa9adef47325eee6e7222e34a529f1e"
+recipient = "1234"

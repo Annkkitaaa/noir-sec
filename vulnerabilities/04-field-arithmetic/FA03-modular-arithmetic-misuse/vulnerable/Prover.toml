@@ -1,0 +1,4 @@
+# FA03 — Legitimate use: user_id=1000, num_shards=256, shard_id=1000%256=232
+user_id = "1000"
+num_shards = "256"
+shard_id = "232"

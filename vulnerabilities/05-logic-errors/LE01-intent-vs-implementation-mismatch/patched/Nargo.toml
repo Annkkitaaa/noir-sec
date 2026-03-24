@@ -1,0 +1,8 @@
+[package]
+name = "le01_patched"
+type = "bin"
+authors = ["NoirSec"]
+compiler_version = ">=0.1.0"
+description = "LE01 - Intent vs Implementation Mismatch (patched circuit)"
+
+[dependencies]

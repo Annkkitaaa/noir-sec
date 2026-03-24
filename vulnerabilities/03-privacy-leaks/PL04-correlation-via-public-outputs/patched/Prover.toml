@@ -1,0 +1,5 @@
+# PL04 Patched -- No demographic info published
+voter_secret = "11189196"
+vote_choice = "1"
+voter_age = "68"
+vote_commitment = "0x1ebbeb22f531dd75901ed837144fe535e6e3e3c08d09764f98cf2a4b0163e0a4"

@@ -1,0 +1,3 @@
+authorized_sender = "12345"
+action_amount = "100"
+auth_commitment = "1"

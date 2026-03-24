@@ -1,0 +1,4 @@
+# CB02 Reproduction inputs
+# All values within max_value=100 -- circuit should pass
+values = ["10", "50", "99", "100"]
+max_value = "100"

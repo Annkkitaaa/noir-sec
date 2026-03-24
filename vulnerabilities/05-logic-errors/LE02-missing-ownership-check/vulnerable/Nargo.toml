@@ -1,0 +1,8 @@
+[package]
+name = "le02_vulnerable"
+type = "bin"
+authors = ["NoirSec"]
+compiler_version = ">=0.1.0"
+description = "LE02 - Missing Ownership Check (vulnerable circuit)"
+
+[dependencies]

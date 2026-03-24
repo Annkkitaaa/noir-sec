@@ -1,0 +1,10 @@
+# NoirSec Detection Scripts — Python Dependencies
+# Install with: pip install -r requirements.txt
+# Requires Python 3.10+
+
+# No external dependencies required for core scripts.
+# The scripts use only Python stdlib + nargo CLI for circuit execution.
+
+# Optional: for statistical analysis in privacy_leak_fuzzer.py
+# numpy>=1.24.0
+# scipy>=1.10.0

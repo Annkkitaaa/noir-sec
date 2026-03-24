@@ -1,0 +1,8 @@
+[package]
+name = "CB03_reproduction"
+type = "bin"
+authors = ["NoirSec"]
+
+compiler_version = ">=0.1.0"
+
+[dependencies]

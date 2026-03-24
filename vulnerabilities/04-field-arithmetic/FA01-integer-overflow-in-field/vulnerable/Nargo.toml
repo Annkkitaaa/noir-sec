@@ -1,0 +1,8 @@
+[package]
+name = "fa01_vulnerable"
+type = "bin"
+authors = ["NoirSec"]
+compiler_version = ">=0.1.0"
+description = "FA01 - Integer Overflow in Field (vulnerable circuit)"
+
+[dependencies]

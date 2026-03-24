@@ -1,0 +1,4 @@
+sender_address = "12345"
+private_balance = "1000"
+withdrawal_amount = "100"
+user_commitment = "0x0429af16b2bde53d4be4eed5868fded060812c764a313a445004b5e3abdc7f9a"

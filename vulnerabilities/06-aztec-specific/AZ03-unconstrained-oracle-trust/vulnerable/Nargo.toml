@@ -1,0 +1,8 @@
+[package]
+name = "az03_vulnerable"
+type = "bin"
+authors = ["NoirSec"]
+compiler_version = ">=0.1.0"
+description = "AZ03 - Unconstrained Oracle Trust (vulnerable circuit)"
+
+[dependencies]

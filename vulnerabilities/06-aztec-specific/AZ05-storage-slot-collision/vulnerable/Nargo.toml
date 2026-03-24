@@ -1,0 +1,8 @@
+[package]
+name = "az05_vulnerable"
+type = "bin"
+authors = ["NoirSec"]
+compiler_version = ">=0.1.0"
+description = "AZ05 - Storage Slot Collision (vulnerable circuit)"
+
+[dependencies]

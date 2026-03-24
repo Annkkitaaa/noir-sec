@@ -1,0 +1,5 @@
+contract_address = "999"
+balance_value = "1000"
+allowance_value = "500"
+balance_slot = "0x02047b72648e0a5385d4d475970eb33dec76230fbb15034062ce0844191d68c1"
+allowance_slot = "0x02047b72648e0a5385d4d475970eb33dec76230fbb15034062ce0844191d68c1"

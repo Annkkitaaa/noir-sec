@@ -1,0 +1,8 @@
+[package]
+name = "pl03_patched"
+type = "bin"
+authors = ["NoirSec"]
+compiler_version = ">=0.1.0"
+description = "PL03 - Nullifier as Identity Leak (patched circuit)"
+
+[dependencies]

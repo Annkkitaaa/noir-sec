@@ -1,0 +1,8 @@
+[package]
+name = "az02_patched"
+type = "bin"
+authors = ["NoirSec"]
+compiler_version = ">=0.1.0"
+description = "AZ02 - Private to Public State Leakage (patched circuit)"
+
+[dependencies]

@@ -1,0 +1,8 @@
+[package]
+name = "pl04_patched"
+type = "bin"
+authors = ["NoirSec"]
+compiler_version = ">=0.1.0"
+description = "PL04 - Correlation via Public Outputs (patched circuit)"
+
+[dependencies]

@@ -1,0 +1,8 @@
+[package]
+name = "fa02_vulnerable"
+type = "bin"
+authors = ["NoirSec"]
+compiler_version = ">=0.1.0"
+description = "FA02 - Division by Zero No Constraint (vulnerable circuit)"
+
+[dependencies]

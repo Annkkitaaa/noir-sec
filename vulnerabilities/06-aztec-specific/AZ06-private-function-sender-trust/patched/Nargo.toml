@@ -1,0 +1,8 @@
+[package]
+name = "az06_patched"
+type = "bin"
+authors = ["NoirSec"]
+compiler_version = ">=0.1.0"
+description = "AZ06 - Private Function msg.sender Trust (patched circuit)"
+
+[dependencies]

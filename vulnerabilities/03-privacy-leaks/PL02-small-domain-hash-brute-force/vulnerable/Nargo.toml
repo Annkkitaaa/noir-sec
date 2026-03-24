@@ -1,0 +1,8 @@
+[package]
+name = "pl02_vulnerable"
+type = "bin"
+authors = ["NoirSec"]
+compiler_version = ">=0.1.0"
+description = "PL02 - Small Domain Hash Brute Force (vulnerable circuit)"
+
+[dependencies]

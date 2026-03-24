@@ -1,0 +1,5 @@
+sender_address = "67890"
+note_secret = "111111"
+recipient = "1234"
+amount = "100"
+nullifier = "0x2de49a741f143de19c982b0543bc969152e956a5a2d2df0bdd8e4563da557c09"

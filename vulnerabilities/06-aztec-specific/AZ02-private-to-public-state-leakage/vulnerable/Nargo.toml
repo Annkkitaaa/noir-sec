@@ -1,0 +1,8 @@
+[package]
+name = "az02_vulnerable"
+type = "bin"
+authors = ["NoirSec"]
+compiler_version = ">=0.1.0"
+description = "AZ02 - Private to Public State Leakage (vulnerable circuit)"
+
+[dependencies]

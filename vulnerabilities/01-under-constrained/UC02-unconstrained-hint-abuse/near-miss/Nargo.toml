@@ -1,0 +1,8 @@
+[package]
+name = "uc02_near_miss"
+type = "bin"
+authors = ["NoirSec"]
+
+compiler_version = ">=0.1.0"
+
+[dependencies]

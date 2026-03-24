@@ -1,0 +1,6 @@
+# UC01 Near-Miss: legitimate input (age=30, min_age=18)
+# The near-miss circuit accepts this correctly.
+# Attack: age = 286 (= 256 + 30), age as u8 = 30, assert(30 >= 18) passes!
+# The prover can use age=286 to "prove" they meet the age requirement.
+age = "30"
+min_age = "18"

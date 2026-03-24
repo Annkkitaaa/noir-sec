@@ -1,0 +1,8 @@
+[package]
+name = "az01_patched"
+type = "bin"
+authors = ["NoirSec"]
+compiler_version = ">=0.1.0"
+description = "AZ01 - Note Nullifier Reuse (patched circuit)"
+
+[dependencies]

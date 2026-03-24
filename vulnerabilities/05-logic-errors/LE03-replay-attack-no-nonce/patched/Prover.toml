@@ -1,0 +1,4 @@
+secret_key = "4660"
+user_id = "1"
+nonce = "11259375"
+auth_hash = "0x061fcc6741fbe69f950d9705359b1a66c6c5969e90bc44c621fa2ef6842adf61"

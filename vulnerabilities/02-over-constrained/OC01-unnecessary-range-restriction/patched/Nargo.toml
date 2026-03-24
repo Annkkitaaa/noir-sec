@@ -1,0 +1,8 @@
+[package]
+name = "oc01_patched"
+type = "bin"
+authors = ["NoirSec"]
+compiler_version = ">=0.1.0"
+description = "OC01 - Unnecessary Range Restriction (patched circuit)"
+
+[dependencies]
