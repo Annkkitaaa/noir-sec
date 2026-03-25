@@ -4,7 +4,9 @@
 
 **The first open-source vulnerability test suite for Noir ZK circuits.**
 
-NoirSec is a hands-on security training corpus for auditors, developers, and researchers working with [Noir](https://noir-lang.org/) — Aztec's domain-specific language for zero-knowledge proof circuits. It contains 19 intentionally vulnerable circuits, each paired with a patched version, an exploit demonstration, and educational commentary.
+Inspired by zkBugs (Circom) and 0xPARC's zk-bug-tracker, NoirSec brings structured, exploitable vulnerability training to the Noir ecosystem.
+
+NoirSec is a hands-on security training corpus for auditors, developers, and researchers working with [Noir](https://noir-lang.org/) — Aztec's domain-specific language for zero-knowledge proof circuits. It contains 22 intentionally vulnerable circuits, each paired with a patched version, an exploit demonstration, and educational commentary.
 
 ---
 
@@ -144,7 +146,7 @@ noir-sec/
 │   ├── NOIR_SECURITY_CHECKLIST.md   # Auditor checklist
 │   └── REFERENCES.md                # Citations and further reading
 ├── TAXONOMY.md                      # Full vulnerability taxonomy
-└── Nargo.toml                       # Workspace (47 members)
+└── Nargo.toml                       # Workspace (50 members)
 ```
 
 ---
@@ -241,7 +243,7 @@ Every vulnerability class in NoirSec has a documented real-world counterpart. Se
 
 ## Near-Miss Examples
 
-Each circuit in NoirSec has a `near-miss/` variant demonstrating a common incorrect fix that still leaves the vulnerability exploitable:
+Three circuits include a `near-miss/` variant demonstrating a common incorrect fix that still leaves the vulnerability exploitable:
 
 - **UC01 near-miss**: `age as u8` truncates but doesn't constrain the Field witness
 - **UC02 near-miss**: `!= 0` check allows trivial `(1, n)` factorization
