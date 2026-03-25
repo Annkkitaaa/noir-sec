@@ -220,7 +220,8 @@ NoirSec is a training corpus, not a production scanner. For production auditing,
 |------|-------|------|
 | **NAVe** | Noir Automated Vulnerability scanner (academic) | Nethermind Research |
 | **QED2** | Constraint system equivalence checker | Veridise |
-| **zkFuzz** | ZK circuit fuzzer | Academic |
+| **zkFuzz** | ZK circuit fuzzer (primarily Circom; preliminary Noir support) | Academic |
+| **nargo fuzz** | Built-in Noir fuzzer via `#[fuzz]` harnesses | Built-in |
 | **Picus** | Symbolic under-constraint detection | Trail of Bits |
 | **aztec-lint** | Aztec-specific static analysis | Aztec Labs |
 | **nargo check** | Compilation correctness | Built-in |
