@@ -2,7 +2,7 @@
 
 ![NoirSec CI](https://github.com/Annkkitaaa/noir-sec/actions/workflows/verify.yml/badge.svg)
 
-**The first open-source vulnerability test suite for Noir ZK circuits.**
+**The open-source vulnerability test suite for Noir ZK circuits.**
 
 Inspired by zkBugs (Circom) and 0xPARC's zk-bug-tracker, NoirSec brings structured, exploitable vulnerability training to the Noir ecosystem.
 
